@@ -24,17 +24,17 @@ This means security should be included in requirement gathering, architecture re
 
 
 4. If you had to pick just three test cases to add to every project's regression suite based on what you discovered today, what would they be and why?
-Answer: 
-1. Access Control Validation Test
+Answer:
+Access Control Validation Test:
 I would always include a test case to check whether a normal user can access admin functions, modify another user’s data or bypass role restrictions. Broken access control vulnerabilities are very common and can lead to serious data exposure or unauthorised actions.
-2. Input Validation and Business Logic Test
+Input Validation and Business Logic Test:
 I would include tests for invalid and unexpected input values such as negative quantities, very large numbers or manipulated request parameters. This is important because many business logic flaws happen when applications trust user input without proper server-side validation.
-3. Security Header and Sensitive File Exposure Test
+Security Header and Sensitive File Exposure Test:
 I would add a test case to verify that important HTTP security headers are present and that sensitive directories or backup files are not publicly accessible. Misconfigured servers and exposed files can provide attackers with valuable information about the application and its internal systems.
 
 
 
-5. Personal reflection (5–7 sentences): What changed in how you think about testing? Which vulnerability surprised you the most and why?
+6. Personal reflection (5–7 sentences): What changed in how you think about testing? Which vulnerability surprised you the most and why?
 Answer:
 This exercise changed the way I used to think about software testing because I realised that testing is not only about checking whether features work correctly. Security weaknesses can exist even when the application appears to function normally for users. I understood how easily small mistakes in validation, configuration or access control can lead to serious vulnerabilities.
 The vulnerability that surprised me the most was the insecure design issue where changing the product quantity to a negative value allowed the total order amount to become negative. I did not expect such a simple input manipulation to completely break the payment logic of the application. It showed me how important server-side validation and business rule checks are.
