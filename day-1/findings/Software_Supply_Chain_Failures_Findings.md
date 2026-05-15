@@ -1,54 +1,52 @@
-Software Supply Chain Failures Findings:
+# Software Supply Chain Failures Findings:
 
-Vulnerability Category:
-OWASP Top 10 – A06:2021 Vulnerable and Outdated Components
+## Vulnerability Category:
+## OWASP Top 10 – A06:2021 Vulnerable and Outdated Components
 
 
-Introduction:
+## Introduction:
 During testing, the application exposed a backup dependency file named package.json.bak through the publicly accessible /ftp directory.
 This file revealed internal third-party dependencies and package versions used by the application. Several outdated and vulnerable packages were identified during dependency analysis.
 
 
-Objective:
+## Objective:
 To identify outdated software components and vulnerable third-party libraries used by the application.
 
 
-Steps Performed   
-1. Accessed:
+## Steps Performed   
+1. Accessed:  
    http://localhost:3000/ftp
-
-2. Downloaded:
-   package.json.bak
-
-3. Reviewed dependency versions.
-
+2. Downloaded:  
+   package.json.bak  
+3. Reviewed dependency versions.  
 4. Checked vulnerabilities using public vulnerability databases.
 
 
-Exposed File:
+## Exposed File:
 package.json.bak
 
 
-Vulnerable Packages Identified
+## Vulnerable Packages Identified
 
-| Package         | Installed Version  | Vulnerability            | Severity 
-| express-jwt     | 0.1.3              | Authentication bypass    | High 
-| sanitize-html   | 1.4.2              | Cross-site scripting     | High 
-| js-yaml         | 3.10               | Prototype pollution/DoS  | Medium 
-| multer          | ~1.3               | Denial of Service        | Medium
-
-
-Finding – Vulnerable express-jwt Package
-
-Severity: High
-Package Details: express-jwt 0.1.3
+| Package         | Installed Version  | Vulnerability            | Severity |
+|---|---|---|---|
+| express-jwt     | 0.1.3              | Authentication bypass    | High |
+| sanitize-html   | 1.4.2              | Cross-site scripting     | High |
+| js-yaml         | 3.10               | Prototype pollution/DoS  | Medium | 
+| multer          | ~1.3               | Denial of Service        | Medium|
 
 
-Description:
+# Finding – Vulnerable express-jwt Package
+
+## Severity: High
+## Package Details: express-jwt 0.1.3
+
+
+## Description:
 The installed version of `express-jwt` was outdated and contained known authentication validation weaknesses.
 
 
-Security Impact:
+## Security Impact:
 An attacker may:
 1. Access protected APIs
 2. Bypass login validation
@@ -56,11 +54,11 @@ An attacker may:
 4. Access restricted data
 
 
-Root Cause:
+## Root Cause:
 The application used outdated third-party dependencies without regular vulnerability monitoring or patching.
 
 
-Recommendation:
+## Recommendation:
 The application should:
 1. Upgrade vulnerable packages
 2. Enable automated dependency scanning
@@ -68,7 +66,7 @@ The application should:
 4. Perform regular patch management
 
 
-Conclusion:
+# Conclusion:
 The application used outdated and vulnerable software components which could increase the risk of:
 1. Authentication bypass
 2. Cross-site scripting
